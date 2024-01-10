@@ -16,7 +16,7 @@ services:
     volumes:
        - ./mysql.conf/my.cnf:/etc/my.cnf
        - ./mysql.conf/mysql-cluster.cnf:/etc/mysql-cluster.cnf
-    command: ndbd
+    command: ndbmtd
     restart: unless-stopped    
     depends_on:
       - "management1"
@@ -28,7 +28,7 @@ services:
     volumes:
        - ./mysql.conf/my.cnf:/etc/my.cnf
        - ./mysql.conf/mysql-cluster.cnf:/etc/mysql-cluster.cnf
-    command: ndbd
+    command: ndbmtd
     restart: unless-stopped    
     depends_on:
       - "management1"
@@ -76,4 +76,3 @@ networks:
       gateway: 172.28.5.254
 
 #  docker run -it -v "$PWD/mysql.conf/my.cnf:/etc/my.cnf" -v "$PWD/mysql.conf/mysql-cluster.cnf:/etc/mysql-cluster.cnf" --net=mysqlcluster_mysqlcluster mysql/mysql-cluster ndb_mgm
-
